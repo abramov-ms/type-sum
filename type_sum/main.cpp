@@ -3,5 +3,5 @@
 #include <iostream>
 
 int main() {
-  std::cout << Nullable(Union(Decimal(1, 2), String(8, false))) << std::endl;
+  std::cout << Sum(Nullable(Decimal(1, 2)), Decimal(2, 1)) << std::endl;
 }

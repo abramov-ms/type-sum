@@ -1,7 +1,14 @@
 #include "type/union.hpp"
 
+#include <cassert>
 #include <string>
 #include <ranges>
+#include <utility>
+
+UnionType::UnionType(std::vector<TypePtr> options)
+    : options(std::move(options)) {
+  assert(!this->options.empty());
+}
 
 std::string UnionType::Display() const {
   auto display = [](const auto& option) {
