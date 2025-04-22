@@ -1,0 +1,5 @@
+file(GLOB_RECURSE TYPE_SUM_SOURCES CONFIGURE_DEPENDS "*.cpp")
+file(GLOB_RECURSE TYPE_SUM_HEADERS CONFIGURE_DEPENDS "*.hpp")
+
+add_executable(type_sum ${TYPE_SUM_SOURCES} ${TYPE_SUM_HEADERS})
+target_include_directories(type_sum PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
