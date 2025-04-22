@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <string>
+#include <sstream>
 #include <ranges>
 #include <utility>
 
@@ -11,10 +12,14 @@ UnionType::UnionType(std::vector<TypePtr> options)
 }
 
 std::string UnionType::Display() const {
-  auto display = [](const auto& option) {
-    return option->Display();
-  };
+  std::ostringstream oss;
 
-  return options | std::views::transform(display) | std::views::join_with('|') |
-         std::ranges::to<std::string>();
+  assert(!options.empty());
+  oss << options[0]->Display();
+
+  for (const auto& option : options | std::views::drop(1)) {
+    oss << "|" << option->Display();
+  }
+
+  return std::move(oss).str();
 }

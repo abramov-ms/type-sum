@@ -1,8 +1,10 @@
 #include "type/nullable.hpp"
 
 #include <string>
-#include <format>
+#include <sstream>
 
 std::string NullableType::Display() const {
-  return std::format("{}?", non_null->Display());
+  std::ostringstream oss;
+  oss << non_null->Display() << "?";
+  return std::move(oss).str();
 }

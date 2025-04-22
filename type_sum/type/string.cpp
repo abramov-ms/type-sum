@@ -1,8 +1,10 @@
 #include "type/string.hpp"
 
 #include <string>
-#include <format>
+#include <sstream>
 
 std::string StringType::Display() const {
-  return std::format("String<{}{}>", is_varying ? "0.." : "", len);
+  std::ostringstream oss;
+  oss << "String<" << (is_varying ? "0.." : "") << ", " << len << ">";
+  return std::move(oss).str();
 }

@@ -1,8 +1,10 @@
 #include "type/decimal.hpp"
 
 #include <string>
-#include <format>
+#include <sstream>
 
 std::string DecimalType::Display() const {
-  return std::format("Decimal<{}, {}>", int_len, frac_len);
+  std::ostringstream oss;
+  oss << "Decimal<" << int_len << ", " << frac_len << ">";
+  return std::move(oss).str();
 }
